@@ -14,31 +14,33 @@ namespace noteclient
 {
     public partial class Form1 : Form
     {
+        //public MySqlConnection connection = new MySqlConnection("Server=95.84.154.71;Database=test;port=3308;User Id=Test;password=JyA2aM3qydPVCfe;SslMode=none;");
+        MySqlConnection connection = DBUtils.GetDBConnection();
+
         public Form1()
         {
-            InitializeComponent();
+            InitializeComponent();    
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Getting Connection ...");
-            MySqlConnection conn = DBUtils.GetDBConnection();
-
+            //MessageBox.Show("Getting Connection ...");
+            //MySqlConnection conn = DBUtils.GetDBConnection();
+            
             try
             {
-                MessageBox.Show("Openning Connection ...");
+                //MessageBox.Show("Openning Connection ...");
 
-                conn.Open();
+                connection.Open();
 
                 MessageBox.Show("Connection successful!");
-
+                
                 string[] strings = new string[5];
-                Check(conn, ref strings);
+                Check(connection, ref strings);
                 listBox1.Items.AddRange(strings);
             }
             catch (Exception ex)
@@ -73,7 +75,7 @@ namespace noteclient
                     {
                         // Индекс (index) столбца Emp_ID в команде SQL.
                         int UserIndex = reader.GetOrdinal("id"); // 0
-
+                        
 
                         long UserId = Convert.ToInt64(reader.GetValue(0));
 
@@ -99,15 +101,15 @@ namespace noteclient
                         //}
                         //Console.WriteLine("--------------------");
                         
-                        MessageBox.Show("empIdIndex:" + UserIndex);
+                        //MessageBox.Show("empIdIndex:" + UserIndex);
+                        //MessageBox.Show("Id:" + UserId);
+                        //MessageBox.Show("Login:" + UserLogin);
+                        //MessageBox.Show("Pass:" + UserPass);
+                        //MessageBox.Show("Email:" + UserEmail);
                         strings[0] = "empIdIndex:" + UserIndex;
-                        MessageBox.Show("Id:" + UserId);
                         strings[1] = "Id:" + UserId;
-                        MessageBox.Show("Login:" + UserLogin);
                         strings[2] = "Login:" + UserLogin;
-                        MessageBox.Show("Pass:" + UserPass);
                         strings[3] = "Pass:" + UserPass;
-                        MessageBox.Show("Email:" + UserEmail);
                         strings[4] = "Email:" + UserEmail;
 
 
@@ -121,6 +123,11 @@ namespace noteclient
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }
