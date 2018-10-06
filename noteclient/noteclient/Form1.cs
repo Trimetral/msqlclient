@@ -31,14 +31,21 @@ namespace noteclient
             //MessageBox.Show("Getting Connection ...");
             //MySqlConnection conn = DBUtils.GetDBConnection();
             
+
+            MySqlConnection conn = DBUtils.GetDBConnection();
+
+
             try
             {
                 //MessageBox.Show("Openning Connection ...");
 
                 connection.Open();
 
+
                 MessageBox.Show("Connection successful!");
-                
+
+                //MessageBox.Show("Connection successful!");
+
                 string[] strings = new string[5];
                 Check(connection, ref strings);
                 listBox1.Items.AddRange(strings);
