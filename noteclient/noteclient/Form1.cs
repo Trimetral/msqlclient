@@ -26,16 +26,16 @@ namespace noteclient
 
         private void button1_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Getting Connection ...");
+            //MessageBox.Show("Getting Connection ...");
             MySqlConnection conn = DBUtils.GetDBConnection();
 
             try
             {
-                MessageBox.Show("Openning Connection ...");
+                //MessageBox.Show("Openning Connection ...");
 
                 conn.Open();
 
-                MessageBox.Show("Connection successful!");
+                //MessageBox.Show("Connection successful!");
 
                 string[] strings = new string[5];
                 Check(conn, ref strings);
@@ -73,8 +73,7 @@ namespace noteclient
                     {
                         // Индекс (index) столбца Emp_ID в команде SQL.
                         int UserIndex = reader.GetOrdinal("id"); // 0
-
-
+                        
                         long UserId = Convert.ToInt64(reader.GetValue(0));
 
                         // Столбец Emp_No имеет index = 1.
@@ -99,15 +98,15 @@ namespace noteclient
                         //}
                         //Console.WriteLine("--------------------");
                         
-                        MessageBox.Show("empIdIndex:" + UserIndex);
+                        //MessageBox.Show("empIdIndex:" + UserIndex);
+                        //MessageBox.Show("Id:" + UserId);
+                        //MessageBox.Show("Login:" + UserLogin);
+                        //MessageBox.Show("Pass:" + UserPass);
+                        //MessageBox.Show("Email:" + UserEmail);
                         strings[0] = "empIdIndex:" + UserIndex;
-                        MessageBox.Show("Id:" + UserId);
                         strings[1] = "Id:" + UserId;
-                        MessageBox.Show("Login:" + UserLogin);
                         strings[2] = "Login:" + UserLogin;
-                        MessageBox.Show("Pass:" + UserPass);
                         strings[3] = "Pass:" + UserPass;
-                        MessageBox.Show("Email:" + UserEmail);
                         strings[4] = "Email:" + UserEmail;
 
 
