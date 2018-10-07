@@ -16,6 +16,7 @@ namespace noteclient
     {
         //public MySqlConnection connection = new MySqlConnection("Server=95.84.154.71;Database=test;port=3308;User Id=Test;password=JyA2aM3qydPVCfe;SslMode=none;");
         MySqlConnection connection = DBUtils.GetDBConnection();
+        
 
         public Form1()
         {
@@ -32,7 +33,7 @@ namespace noteclient
             //MySqlConnection conn = DBUtils.GetDBConnection();
             
 
-            MySqlConnection conn = DBUtils.GetDBConnection();
+            //MySqlConnection conn = DBUtils.GetDBConnection();
 
 
             try
@@ -134,7 +135,7 @@ namespace noteclient
 
         private void button2_Click(object sender, EventArgs e)
         {
-            
+            connection.Close();
         }
     }
 }
